@@ -1,5 +1,5 @@
 # pipelinecreator - Plumber for the Luigi Framework
-Graphical pipe line creator for luigi framework using NetworkX.
+Graphical pipeline creator for luigi framework using NetworkX.
 
 
 Let's be a plumber for the Luigi Framework pipelines (https://github.com/spotify/luigi).
