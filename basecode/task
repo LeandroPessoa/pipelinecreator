@@ -1,0 +1,56 @@
+import luigi
+
+import datetime
+
+from <lib> import *
+
+from hp_getlist import getList
+
+
+
+class getContacts(luigi.Task):
+
+    # Example parameter for our task: a 
+    # date for which a report should be run
+    lista = luigi.Parameter()
+
+    def requires(self):
+        """
+        Which other Tasks need to be complete before
+        this Task can start? Luigi will use this to 
+        compute the task dependency graph.
+        """
+        return [getList(lista=self.lista)]
+
+    def output(self):
+        """
+        When this Task is complete, where will it produce output?
+        Luigi will check whether this output (specified as a Target) 
+        exists to determine whether the Task needs to run at all.
+        """
+        
+        return luigi.LocalTarget('<output>.txt')
+
+    def run(self):
+        """
+        How do I run this Task?
+        Luigi will call this method if the Task needs to be run.
+        """
+        # We can do anything we want in here, from calling python
+        # methods to running shell scripts to calling APIs
+
+        with self.input().open('r') as in_file:
+            vids = in_file.read()
+            usuarios = rows.import_from_csv('buffer.csv')
+
+            for row in usuarios:
+                listas = getContactData(row.access_token, vids, self.lista)
+      
+            
+
+       
+        
+
+       
+        with self.output().open('w') as out_file:
+            out_file.write("done")
